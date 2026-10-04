@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Craft - Take Control of What Your AI Remembers</title>
+  <meta name="description" content="Browser extension that lets you manually curate AI conversation context. Never repeat yourself again.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: white;
+      color: #10b981;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    .problem {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 24px;
+      margin-bottom: 40px;
+      border-radius: 8px;
+    }
+
+    .problem h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 12px;
+    }
+
+    .problem p {
+      font-size: 16px;
+      color: #7f1d1d;
+      line-height: 1.6;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #6b7280;
+      margin: 12px 0;
+      padding-left: 16px;
+      border-left: 2px solid #d1d5db;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .feature {
+      padding: 24px;
+      background: #f9fafb;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .feature p {
+      font-size: 15px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .demo {
+      background: #f9fafb;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .demo h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .demo-step {
+      margin-bottom: 24px;
+    }
+
+    .demo-step h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #10b981;
+      margin-bottom: 8px;
+    }
+
+    .demo-step p {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .research-backed {
+      background: #eff6ff;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .research-backed h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: #1e40af;
+      text-align: center;
+    }
+
+    .research-backed ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .research-backed li {
+      font-size: 15px;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .research-backed li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    footer p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: #10b981;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Context Craft</h1>
+    <p>Take control of what your AI remembers</p>
+    <a href="https://github.com/gmdeo/ai-gap-20261004" class="cta-button">View on GitHub</a>
+  </div>
+
+  <div class="container">
+    <div class="problem">
+      <h3>The Problem: AI "Goldfish Memory"</h3>
+      <p>AI assistants lose context mid-conversation, forget important instructions, and mix up details from different exchanges. Users lose 11-20% of work time constantly repeating themselves.</p>
+      <div class="quote">"It seems to have a goldfish memory now, even if it has access to the written information, it will ignore a lot of it so you constantly need to repeat stuff"</div>
+      <div class="quote">"I wish every instruction and response had a enable/disable checkbox so that I can disable parts of the conversation"</div>
+      <p style="margin-top: 16px;"><strong>Over 50 mentions across Reddit and Hacker News</strong> with users using consistent frustrated language: "goldfish memory", "constantly repeat", "doesn't remember anything"</p>
+    </div>
+
+    <h2 class="section-title">How Context Craft Works</h2>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <h3>Toggle Context</h3>
+        <p>See every message in your conversation. Toggle individual messages on or off to control what the AI remembers.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📦</div>
+        <h3>Archive Old Messages</h3>
+        <p>Move outdated code, rejected ideas, or obsolete instructions out of active context. Keep them for reference without polluting current work.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Token Visibility</h3>
+        <p>See estimated token count for your active context. Understand capacity constraints instead of hitting mysterious limits.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🔄</div>
+        <h3>Reversible Changes</h3>
+        <p>Archive is reversible, not permanent deletion. Experiment with different context combinations without fear of data loss.</p>
+      </div>
+    </div>
+
+    <div class="demo">
+      <h3>Example Workflow</h3>
+      <div class="demo-step">
+        <h4>Step 1: You're working on a coding project</h4>
+        <p>After 20 exchanges, you've fixed bugs and improved the design. But the conversation now contains early broken code and outdated ideas.</p>
+      </div>
+
+      <div class="demo-step">
+        <h4>Step 2: Without Context Craft</h4>
+        <p>Claude starts suggesting the old broken approach because it's still in context. You have to repeatedly say "no, we already fixed that" or start fresh (losing all good context).</p>
+      </div>
+
+      <div class="demo-step">
+        <h4>Step 3: With Context Craft</h4>
+        <p>Open the sidebar. Toggle OFF messages with old code and outdated ideas. Next response reflects only the curated context — AI remembers exactly what you want it to remember.</p>
+      </div>
+    </div>
+
+    <div class="research-backed">
+      <h3>Research-Backed Design</h3>
+      <ul>
+        <li><strong>Memory Hierarchy:</strong> Active context (L1 cache) + Archive (L3 storage) prevents context pollution</li>
+        <li><strong>User Control:</strong> Manual curation creates engagement — users report "finally!" response when given memory management</li>
+        <li><strong>Trust Restoration:</strong> 41% of users report repeating information to AI; explicit toggle action rebuilds confidence</li>
+        <li><strong>Cognitive Load Reduction:</strong> Reversible archive reduces loss anxiety; immediate visual feedback on every toggle</li>
+        <li><strong>Accessibility:</strong> Keyboard navigation, WCAG AA contrast, reduced-motion support</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Install Context Craft</h2>
+    <div style="text-align: center; margin-bottom: 60px;">
+      <p style="font-size: 18px; margin-bottom: 24px; color: #6b7280;">Browser extension for Chrome and Firefox</p>
+      <a href="https://github.com/gmdeo/ai-gap-20261004" class="cta-button">Download from GitHub</a>
+    </div>
+
+    <h2 class="section-title">What This Unlocks</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>AI Code Review Studio</h3>
+        <p>Same toggle UI for line-level comments on AI-generated code. Track what changed across iterations.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Task Verification Layer</h3>
+        <p>"Show me what you'll change before you do it" - context control becomes action approval workflow.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Email Context Manager</h3>
+        <p>Toggle which emails AI remembers when drafting replies. Same research foundation applied to email threads.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Meeting Notes Curator</h3>
+        <p>Toggle which parts of transcript go into summary. Time-coded audio segments with context control.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Research Paper Manager</h3>
+        <p>Toggle which papers/sections AI references when writing literature reviews. PDF extraction + citation tracking.</p>
+      </div>
+
+      <div class="feature">
+        <h3>AI Prompt Templates</h3>
+        <p>Save curated context + instructions as reusable templates. Share community templates.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Context Craft | Built for Build-a-Day October 4, 2026</p>
+    <p style="margin-top: 8px;">Open source | <a href="https://github.com/gmdeo/ai-gap-20261004">GitHub</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,276 @@
+/* Context Craft Sidebar Styles */
+
+#context-craft-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  border-left: 1px solid #e5e7eb;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.08);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header */
+.cc-header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  flex-shrink: 0;
+}
+
+.cc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.cc-token-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.cc-token-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.cc-token-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* Empty State */
+.cc-empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  flex: 1;
+}
+
+.cc-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.cc-empty-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.cc-empty-hint {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Message List */
+.cc-message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: none;
+}
+
+.cc-message-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cc-message-list::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.cc-message-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.cc-message-list::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Message Item */
+.cc-message-item {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.cc-message-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.cc-message-item.cc-active {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.cc-message-item.cc-archived {
+  border-color: #d1d5db;
+  background: #f9fafb;
+  opacity: 0.7;
+}
+
+/* Message Header */
+.cc-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cc-message-role {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cc-toggle-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.cc-toggle-btn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.cc-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.cc-active .cc-toggle-btn {
+  border-color: #10b981;
+  background: #10b981;
+  color: #ffffff;
+}
+
+.cc-archived .cc-toggle-btn {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* Message Preview */
+.cc-message-preview {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cc-archived .cc-message-preview {
+  color: #6b7280;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .cc-message-item,
+  .cc-toggle-btn {
+    transition: none;
+  }
+}
+
+/* Dark Mode Support (if needed) */
+@media (prefers-color-scheme: dark) {
+  #context-craft-sidebar {
+    background: #1a1a1a;
+    border-left-color: #374151;
+  }
+  
+  .cc-header {
+    background: #111827;
+    border-bottom-color: #374151;
+  }
+  
+  .cc-title {
+    color: #f9fafb;
+  }
+  
+  .cc-token-count {
+    background: #1a1a1a;
+    border-color: #374151;
+  }
+  
+  .cc-token-label {
+    color: #9ca3af;
+  }
+  
+  .cc-empty-text {
+    color: #f9fafb;
+  }
+  
+  .cc-empty-hint {
+    color: #9ca3af;
+  }
+  
+  .cc-message-item {
+    background: #1a1a1a;
+    border-color: #374151;
+  }
+  
+  .cc-message-item.cc-active {
+    border-color: #10b981;
+    background: #064e3b;
+  }
+  
+  .cc-message-item.cc-archived {
+    background: #111827;
+    border-color: #4b5563;
+  }
+  
+  .cc-message-preview {
+    color: #d1d5db;
+  }
+  
+  .cc-archived .cc-message-preview {
+    color: #9ca3af;
+  }
+  
+  .cc-toggle-btn {
+    background: #1a1a1a;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .cc-toggle-btn:hover {
+    background: #374151;
+  }
+}
